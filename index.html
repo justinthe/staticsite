@@ -75,7 +75,7 @@
                     <p class="text-sm font-semibold text-gray-500 mb-2">PENCEGAHAN & PERENCANAAN</p>
                     <p class="text-gray-700">Menganalisis data struktural dan vegetasi untuk mengidentifikasi kerentanan sebelum menjadi ancaman. Laporan bulanan memberikan dasar untuk tindakan preventif.</p>
                     <ul class="mt-4 space-y-2 text-sm">
-                        <li class="flex items-center"><span class="text-[#7a5195] mr-2">🛰️</span> Penurunan Lahan (InSAR)</li>
+                        <li class="flex items-center"><span class="text-[#7a5195] mr-2">🛰️</span> Penurunan Lahan</li>
                         <li class="flex items-center"><span class="text-[#7a5195] mr-2">🌲</span> Kesehatan Tanaman (NDVI)</li>
                         <li class="flex items-center"><span class="text-[#7a5195] mr-2">🗺️</span> Profil & Penggunaan Lahan</li>
                     </ul>
@@ -100,8 +100,8 @@
                     <h2 class="text-3xl md:text-4xl font-bold text-[#003f5c]">Presisi Satelit: Teknologi di Balik Peringatan</h2>
                     <p class="mt-2 text-gray-600">Kami mengubah data satelit mentah menjadi keputusan strategis. Dengan menggabungkan beberapa sumber data presisi tinggi, kami menghasilkan 'Skor Risiko Longsor' yang akurat dan mudah dipahami untuk setiap lokasi.</p>
                     <div class="mt-6 space-y-4">
-                       <div class="p-4 bg-gray-200 rounded-md"><strong>InSAR (Sentinel-1):</strong> Mendeteksi pergerakan tanah dengan akurasi sub-sentimeter.</div>
-                       <div class="p-4 bg-gray-200 rounded-md"><strong>NDVI (Sentinel-2):</strong> Menganalisis kesehatan vegetasi sebagai penahan erosi alami.</div>
+                       <div class="p-4 bg-gray-200 rounded-md"><strong>InSAR (Radar):</strong> Mendeteksi pergerakan tanah dengan akurasi sub-sentimeter.</div>
+                       <div class="p-4 bg-gray-200 rounded-md"><strong>NDVI (Citra Optik):</strong> Menganalisis kesehatan vegetasi sebagai penahan erosi alami.</div>
                        <div class="p-4 bg-gray-200 rounded-md"><strong>Prophet ML:</strong> Membuat prediksi cuaca hiper-lokal untuk setiap situs PLTMH.</div>
                     </div>
                 </div>
@@ -158,24 +158,7 @@
             </div>
         </section>
 
-        <section id="roi" class="my-12">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                 <div class="bg-white p-6 rounded-lg shadow-md">
-                     <h3 class="text-center text-xl font-bold text-[#003f5c] mb-4">Perbandingan Investasi vs. Risiko</h3>
-                    <div class="chart-container">
-                        <canvas id="roiChart"></canvas>
-                    </div>
-                     <p class="text-center text-sm text-gray-500 mt-4">Visualisasi perbandingan antara biaya layanan bulanan dengan potensi kerugian finansial dari satu insiden bencana.</p>
-                </div>
-                <div class="text-left">
-                    <h2 class="text-3xl md:text-4xl font-bold text-[#003f5c]">Membeli Kepastian: Investasi Cerdas</h2>
-                    <p class="mt-2 text-gray-600">Investasi dalam sistem LEWS adalah asuransi proaktif. Biaya layanan bulanan kami jauh lebih kecil dibandingkan potensi kerugian miliaran rupiah akibat kerusakan infrastruktur, downtime produksi, dan yang terpenting, risiko keselamatan.</p>
-                    <div class="mt-6 border-t-2 pt-4">
-                        <p class="text-lg font-semibold text-[#003f5c]">Ini bukan biaya operasional, ini adalah investasi dalam keberlanjutan dan ketahanan bisnis Anda.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+        
 
         <section id="why-us" class="my-12 text-center">
             <h2 class="text-3xl md:text-4xl font-bold text-[#003f5c] mb-8">Mengapa PT Eidara Matadata Presisi?</h2>
@@ -246,7 +229,7 @@
                 
                 const originalLabels = [
                     'Prakiraan Cuaca', 
-                    'Penurunan Lahan (InSAR)', 
+                    'Penurunan Lahan', 
                     'Kesehatan Tanaman (NDVI)', 
                     'Profil & Penggunaan Lahan'
                 ];
@@ -285,70 +268,7 @@
                 });
             };
 
-            const createRoiChart = () => {
-                const ctx = document.getElementById('roiChart')?.getContext('2d');
-                if (!ctx) return;
-
-                new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: ['Investasi LEWS Tahap 3', 'Potensi Kerugian 1 Insiden'],
-                        datasets: [{
-                            label: 'Biaya (dalam Rupiah)',
-                            data: [30000000, 5000000000], 
-                            backgroundColor: ['#ffa600', '#ef5675'],
-                            borderColor: ['#ffa600', '#ef5675'],
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        indexAxis: 'y',
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        scales: {
-                           x: {
-                                type: 'logarithmic',
-                                title: {
-                                    display: true,
-                                    text: 'Biaya dalam Rupiah (Skala Logaritmik)'
-                                },
-                                ticks: {
-                                    callback: function(value, index, values) {
-                                        if (value === 10000000) return '10 Juta';
-                                        if (value === 100000000) return '100 Juta';
-                                        if (value === 1000000000) return '1 Miliar';
-                                        if (value === 10000000000) return '10 Miliar';
-                                        return null;
-                                    }
-                                }
-                            }
-                        },
-                        plugins: {
-                             legend: {
-                                display: false
-                            },
-                            tooltip: {
-                                callbacks: {
-                                    title: tooltipTitleCallback,
-                                    label: function(context) {
-                                        let label = context.dataset.label || '';
-                                        if (label) {
-                                            label += ': ';
-                                        }
-                                        if (context.parsed.x !== null) {
-                                            label += new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(context.parsed.x);
-                                        }
-                                        return label;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                });
-            };
-
             createRiskCompositionChart();
-            createRoiChart();
         });
     </script>
 </body>
