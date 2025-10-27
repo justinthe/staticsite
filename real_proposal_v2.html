@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografik: Sistem Peringatan Dini Longsor (LEWS)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #ef5675, #ff764a, #ffa600);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .flowchart-arrow {
+            position: relative;
+            padding-right: 2rem;
+        }
+        .flowchart-arrow::after {
+            content: '→';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            color: #ffa600;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center py-12">
+            <h1 class="text-4xl md:text-6xl font-black text-[#003f5c] tracking-tight">Kemitraan Strategis untuk Ketahanan Aset</h1>
+            <p class="mt-4 text-lg md:text-xl text-[#374c80]">Sistem Peringatan Dini Longsor (LEWS) untuk 16 Situs PLTMH PT Tamaris Hydro</p>
+        </header>
+
+        <section id="hook" class="bg-white rounded-lg shadow-xl p-8 md:p-12 my-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold gradient-text">Ancaman Nyata, Risiko Terukur</h2>
+            <p class="mt-4 max-w-3xl mx-auto text-lg text-gray-600">Insiden longsor dan banjir di PLTMH Cikaso pada Desember 2024 bukanlah kejadian tak terduga. Analisis retrospektif kami membuktikan bahwa anomali kritis pada data geospasial sudah terdeteksi jauh sebelumnya.</p>
+            <div class="mt-8 bg-[#003f5c] text-white rounded-lg p-6 max-w-4xl mx-auto">
+                <p class="text-2xl md:text-3xl font-bold tracking-wider">"Kami membantu Anda melihat apa yang tidak terlihat, sebelum terlambat."</p>
+            </div>
+        </section>
+        
+        <section id="solution" class="my-12">
+            <div class="text-center mb-8">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#003f5c]">LEWS: Solusi Peringatan Dini Dua Arah</h2>
+                <p class="mt-2 max-w-3xl mx-auto text-gray-600">Sistem kami mengintegrasikan dua lapisan peringatan untuk memberikan perlindungan komprehensif: pencegahan jangka panjang dan respons cepat.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 items-center">
+                <div class="lg:col-span-2 bg-white rounded-lg shadow-md p-6 border-l-4 border-[#7a5195]">
+                    <h3 class="text-xl font-bold text-[#7a5195]">Indikator Menengah-Panjang</h3>
+                    <p class="text-sm font-semibold text-gray-500 mb-2">PENCEGAHAN & PERENCANAAN</p>
+                    <p class="text-gray-700">Menganalisis data struktural dan vegetasi untuk mengidentifikasi kerentanan sebelum menjadi ancaman. Laporan bulanan memberikan dasar untuk tindakan preventif.</p>
+                    <ul class="mt-4 space-y-2 text-sm">
+                        <li class="flex items-center"><span class="text-[#7a5195] mr-2">🛰️</span> Penurunan Lahan</li>
+                        <li class="flex items-center"><span class="text-[#7a5195] mr-2">🌲</span> Kesehatan Tanaman (NDVI)</li>
+                        <li class="flex items-center"><span class="text-[#7a5195] mr-2">🗺️</span> Profil & Penggunaan Lahan</li>
+                    </ul>
+                </div>
+
+                <div class="hidden lg:block text-center text-6xl font-bold text-[#ffa600]">+</div>
+
+                <div class="lg:col-span-2 bg-white rounded-lg shadow-md p-6 border-l-4 border-[#ff764a]">
+                    <h3 class="text-xl font-bold text-[#ff764a]">Indikator Pendek</h3>
+                     <p class="text-sm font-semibold text-gray-500 mb-2">RESPONS REAL-TIME</p>
+                    <p class="text-gray-700">Menggunakan model prediksi cuaca untuk memicu peringatan segera saat kondisi curah hujan ekstrem terdeteksi, memungkinkan respons cepat untuk meminimalisir dampak.</p>
+                     <ul class="mt-4 space-y-2 text-sm">
+                        <li class="flex items-center"><span class="text-[#ff764a] mr-2">🌦️</span> Prakiraan Cuaca (Prophet ML)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="technology" class="my-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="text-left">
+                    <h2 class="text-3xl md:text-4xl font-bold text-[#003f5c]">Presisi Satelit: Teknologi di Balik Peringatan</h2>
+                    <p class="mt-2 text-gray-600">Kami mengubah data satelit mentah menjadi keputusan strategis. Dengan menggabungkan beberapa sumber data presisi tinggi, kami menghasilkan 'Skor Risiko Longsor' yang akurat dan mudah dipahami untuk setiap lokasi.</p>
+                    <div class="mt-6 space-y-4">
+                       <div class="p-4 bg-gray-200 rounded-md"><strong>InSAR (Radar):</strong> Mendeteksi pergerakan tanah dengan akurasi sub-sentimeter.</div>
+                       <div class="p-4 bg-gray-200 rounded-md"><strong>NDVI (Citra Optik):</strong> Menganalisis kesehatan vegetasi sebagai penahan erosi alami.</div>
+                       <div class="p-4 bg-gray-200 rounded-md"><strong>Prophet ML:</strong> Membuat prediksi cuaca hiper-lokal untuk setiap situs PLTMH.</div>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                     <h3 class="text-center text-xl font-bold text-[#003f5c] mb-4">Komposisi Bobot Skor Risiko</h3>
+                    <div class="chart-container">
+                        <canvas id="riskCompositionChart"></canvas>
+                    </div>
+                     <p class="text-center text-sm text-gray-500 mt-4">Prakiraan cuaca memiliki bobot tertinggi dalam memicu peringatan jangka pendek, sementara data geospasial membangun fondasi risiko jangka panjang.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="roadmap" class="my-12">
+             <div class="text-center mb-10">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#003f5c]">Roadmap Implementasi Bertahap di 16 Situs</h2>
+                <p class="mt-2 max-w-3xl mx-auto text-gray-600">Kami menerapkan strategi rollout yang terukur, dimulai dari situs pilot untuk validasi dan kalibrasi model, sebelum ekspansi penuh ke seluruh aset Anda.</p>
+            </div>
+            <div class="relative wrap overflow-hidden p-10 h-full">
+                <div class="border-2-2 absolute border-opacity-20 border-gray-700 h-full border" style="left: 50%"></div>
+                
+                <div class="mb-8 flex justify-between items-center w-full right-timeline">
+                    <div class="order-1 w-5/12"></div>
+                    <div class="z-20 flex items-center order-1 bg-[#bc5090] shadow-xl w-8 h-8 rounded-full">
+                        <h1 class="mx-auto font-semibold text-lg text-white">1</h1>
+                    </div>
+                    <div class="order-1 bg-white rounded-lg shadow-xl w-5/12 px-6 py-4">
+                        <h3 class="font-bold text-[#bc5090] text-xl">Tahap 1: Laporan PDF</h3>
+                        <p class="text-sm leading-snug tracking-wide text-gray-600"><strong>Bulan 1-6:</strong> Implementasi analisis dan laporan PDF untuk 1-2 situs pilot, dilanjutkan ekspansi ke 16 situs.</p>
+                    </div>
+                </div>
+
+                <div class="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
+                    <div class="order-1 w-5/12"></div>
+                     <div class="z-20 flex items-center order-1 bg-[#7a5195] shadow-xl w-8 h-8 rounded-full">
+                        <h1 class="mx-auto font-semibold text-lg text-white">2</h1>
+                    </div>
+                    <div class="order-1 bg-white rounded-lg shadow-xl w-5/12 px-6 py-4">
+                        <h3 class="font-bold text-[#7a5195] text-xl">Tahap 2: Web & API</h3>
+                        <p class="text-sm leading-snug tracking-wide text-gray-600"><strong>Bulan 7-12:</strong> Peluncuran platform web interaktif dan integrasi API untuk situs pilot, diikuti perluasan ke 16 situs.</p>
+                    </div>
+                </div>
+                
+                 <div class="mb-8 flex justify-between items-center w-full right-timeline">
+                    <div class="order-1 w-5/12"></div>
+                    <div class="z-20 flex items-center order-1 bg-[#374c80] shadow-xl w-8 h-8 rounded-full">
+                        <h1 class="mx-auto font-semibold text-lg text-white">3</h1>
+                    </div>
+                    <div class="order-1 bg-white rounded-lg shadow-xl w-5/12 px-6 py-4">
+                        <h3 class="font-bold text-[#374c80] text-xl">Tahap 3: Mobile App</h3>
+                        <p class="text-sm leading-snug tracking-wide text-gray-600"><strong>Pasca Tahap 2:</strong> Peluncuran aplikasi mobile dengan geolokasi serentak untuk tim lapangan di 16 situs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="investment" class="my-12">
+            <div class="text-center mb-10">
+                <h2 class="text-3xl md:text-4xl font-bold text-[#003f5c]">Rencana Investasi (Biaya Bulanan Per Situs)</h2>
+                <p class="mt-2 max-w-3xl mx-auto text-gray-600">Harga layanan disesuaikan dengan fitur dan kompleksitas sistem yang terus berevolusi pada setiap tahap implementasi.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                
+                <div class="bg-white p-6 rounded-lg shadow-xl border-t-4 border-[#bc5090] transform hover:scale-[1.02] transition-transform">
+                    <h3 class="text-xl font-bold text-[#bc5090]">Tahap 1</h3>
+                    <p class="text-sm text-gray-500 mb-4">Laporan PDF Bulanan</p>
+                    <p class="text-4xl font-black text-[#003f5c]">Rp 15 Juta</p>
+                    <p class="text-sm text-gray-600 mt-2">Per situs per bulan</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-xl border-t-4 border-[#7a5195] transform hover:scale-[1.02] transition-transform">
+                    <h3 class="text-xl font-bold text-[#7a5195]">Tahap 2</h3>
+                    <p class="text-sm text-gray-500 mb-4">Web Dashboard & API Integration</p>
+                    <p class="text-4xl font-black text-[#003f5c]">Rp 20 Juta</p>
+                    <p class="text-sm text-gray-600 mt-2">Per situs per bulan</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-xl border-t-4 border-[#374c80] transform hover:scale-[1.02] transition-transform">
+                    <h3 class="text-xl font-bold text-[#374c80]">Tahap 3</h3>
+                    <p class="text-sm text-gray-500 mb-4">Mobile App & Geolokasi</p>
+                    <p class="text-4xl font-black text-[#003f5c]">Rp 30 Juta</p>
+                    <p class="text-sm text-gray-600 mt-2">Per situs per bulan</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="why-us" class="my-12 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-[#003f5c] mb-8">Mengapa PT Eidara Matadata Presisi?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="text-4xl mb-4">🛰️</div>
+                    <h3 class="text-xl font-bold text-[#003f5c]">Spesialis Geospasial</h3>
+                    <p class="text-gray-600 mt-2">Fokus tunggal pada analisis data presisi tinggi untuk solusi yang akurat dan dapat diandalkan.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                     <div class="text-4xl mb-4">🎓</div>
+                    <h3 class="text-xl font-bold text-[#003f5c]">Kemitraan Akademik</h3>
+                    <p class="text-gray-600 mt-2">Kolaborasi dengan Universitas Harkat Negeri (TEFA) memastikan metodologi kami ilmiah dan mutakhir.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                     <div class="text-4xl mb-4">💡</div>
+                    <h3 class="text-xl font-bold text-[#003f5c]">Pengalaman Sektor PLTMH</h3>
+                    <p class="text-gray-600 mt-2">Rekam jejak terbukti dengan PT Arkora. Kami memahami tantangan unik industri Anda.</p>
+                </div>
+            </div>
+        </section>
+
+     
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const wrapLabel = (label, maxLength = 16) => {
+                if (typeof label !== 'string' || label.length <= maxLength) {
+                    return label;
+                }
+                const words = label.split(' ');
+                const lines = [];
+                let currentLine = '';
+                for (const word of words) {
+                    if ((currentLine + ' ' + word).trim().length > maxLength) {
+                        lines.push(currentLine.trim());
+                        currentLine = word;
+                    } else {
+                        currentLine = (currentLine + ' ' + word).trim();
+                    }
+                }
+                if (currentLine) {
+                    lines.push(currentLine.trim());
+                }
+                return lines;
+            };
+
+            const tooltipTitleCallback = (tooltipItems) => {
+                const item = tooltipItems[0];
+                let label = item.chart.data.labels[item.dataIndex];
+                if (Array.isArray(label)) {
+                    return label.join(' ');
+                }
+                return label;
+            };
+
+            const createRiskCompositionChart = () => {
+                const ctx = document.getElementById('riskCompositionChart')?.getContext('2d');
+                if (!ctx) return;
+                
+                const originalLabels = [
+                    'Prakiraan Cuaca', 
+                    'Penurunan Lahan', 
+                    'Kesehatan Tanaman (NDVI)', 
+                    'Profil & Penggunaan Lahan'
+                ];
+
+                new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: originalLabels.map(label => wrapLabel(label)),
+                        datasets: [{
+                            label: 'Bobot Risiko',
+                            data: [50, 20, 20, 10],
+                            backgroundColor: ['#ff764a', '#7a5195', '#374c80', '#003f5c'],
+                            borderColor: '#ffffff',
+                            borderWidth: 2,
+                            hoverOffset: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                     boxWidth: 15,
+                                     padding: 20
+                                }
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    title: tooltipTitleCallback
+                                }
+                            }
+                        }
+                    }
+                });
+            };
+
+            createRiskCompositionChart();
+        });
+    </script>
+</body>
+</html>
