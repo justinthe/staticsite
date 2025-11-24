@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PT. Dian Niaga Jakarta - Strategic Capital Partnership</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals (White, Gray-50, Stone, Amber) -->
+    <!-- Application Structure Plan: A single-page application with a tabbed navigation (Overview, The Opportunity, Why Us?, Market & Growth, Social Impact). This structure synthesizes the linear report into a user-driven dashboard, allowing the investor to explore key data points (financials, validation, social mission) in a non-linear, interactive way. The 'Overview' tab acts as a "teaser" dashboard with key metrics and charts to draw interest, aligning with the user's previous "teaser" letter strategy. -->
+    <!-- Visualization & Content Choices: Exec Summary Metrics (Stat Cards) -> Inform -> HTML/Tailwind; 4-Year Payback (Bar Chart) -> Inform/Change -> Chart.js; Use of Funds (Donut Chart) -> Proportion -> Chart.js; Offtaker Distribution (Stacked Bar Chart) -> Compare/Change -> Chart.js; Validation/Social Text (Styled Cards) -> Inform -> HTML/Tailwind. This mix presents all key quantitative data visually while structuring qualitative points for easy reading. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb; 
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px;
+            max-height: 400px;
+        }
+        @media (max-width: 640px) {
+            .chart-container {
+                height: 300px;
+            }
+        }
+        .tab-button {
+            transition: all 0.3s ease;
+            border-bottom: 2px solid transparent;
+        }
+        .tab-button.active {
+            border-color: #b45309; 
+            color: #b45309; 
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .stat-card {
+            background-color: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            padding: 1.5rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="min-h-screen p-4 md:p-8">
+        <div class="max-w-7xl mx-auto bg-white rounded-lg shadow-xl overflow-hidden">
+            
+            <header class="p-6 border-b border-gray-200">
+                <h1 class="text-2xl md:text-3xl font-bold text-stone-800">PT. Dian Niaga Jakarta</h1>
+                <p class="text-lg text-amber-700">Strategic Capital Partnership</p>
+            </header>
+
+            <nav class="flex flex-wrap border-b border-gray-200 bg-gray-50">
+                <button class="tab-button active text-sm md:text-base font-medium py-4 px-3 sm:px-6 text-gray-600 hover:text-amber-700" data-tab="overview">
+                    Overview
+                </button>
+                <button class="tab-button text-sm md:text-base font-medium py-4 px-3 sm:px-6 text-gray-600 hover:text-amber-700" data-tab="opportunity">
+                    The Opportunity
+                </button>
+                <button class="tab-button text-sm md:text-base font-medium py-4 px-3 sm:px-6 text-gray-600 hover:text-amber-700" data-tab="validation">
+                    Why Us? (Validation)
+                </button>
+                <button class="tab-button text-sm md:text-base font-medium py-4 px-3 sm:px-6 text-gray-600 hover:text-amber-700" data-tab="market">
+                    Market & Growth
+                </button>
+                <button class="tab-button text-sm md:text-base font-medium py-4 px-3 sm:px-6 text-gray-600 hover:text-amber-700" data-tab="social">
+                    Social Impact
+                </button>
+            </nav>
+
+            <main class="p-6 md:p-8">
+                
+                <div id="overview" class="tab-content active">
+                    <h2 class="text-2xl font-bold mb-6 text-stone-700">Investment Overview</h2>
+                    <p class="text-lg text-gray-600 mb-8">
+                        This is a low-risk, high-return opportunity to fund the expansion of a proven, infrastructure-ready manufacturer with secured contracts. This dashboard provides an interactive summary of the project proposal.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                        <div class="stat-card">
+                            <h3 class="text-sm font-medium text-gray-500 uppercase">Investment Target</h3>
+                            <p class="text-3xl font-bold text-stone-800">$500,000</p>
+                            <span class="text-sm text-gray-500">4-Year Term</span>
+                        </div>
+                        <div class="stat-card">
+                            <h3 class="text-sm font-medium text-gray-500 uppercase">Total Distribution</h3>
+                            <p class="text-3xl font-bold text-stone-800">$865,158</p>
+                            <span class="text-sm text-gray-500">~173% Total Return</span>
+                        </div>
+                        <div class="stat-card">
+                            <h3 class="text-sm font-medium text-gray-500 uppercase">Profit-Earning Rate (IRR)</h3>
+                            <p class="text-3xl font-bold text-amber-700">~24.73%</p>
+                            <span class="text-sm text-gray-500">Annualized</span>
+                        </div>
+                        <div class="stat-card">
+                            <h3 class="text-sm font-medium text-gray-500 uppercase">Investor Profit Share</h3>
+                            <p class="text-3xl font-bold text-stone-800">25%</p>
+                            <span class="text-sm text-gray-500">Of Annual Profit</span>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <div class="bg-white p-6 rounded-lg shadow-lg">
+                            <h3 class="text-lg font-semibold mb-4 text-center">Projected Annual Distributions</h3>
+                            <div class="chart-container">
+                                <canvas id="paybackChart"></canvas>
+                            </div>
+                            <p class="text-sm text-gray-600 mt-4 text-center">This chart illustrates the projected annual cash distribution to the investor over the 4-year term, demonstrating strong and increasing returns.</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-lg">
+                            <h3 class="text-lg font-semibold mb-4 text-center">Use of Funds ($500k)</h3>
+                            <div class="chart-container" style="max-width: 400px; height: 350px;">
+                                <canvas id="fundsChart"></canvas>
+                            </div>
+                            <p class="text-sm text-gray-600 mt-4 text-center">The capital is primarily allocated to working capital to fund the immediate increase in trading volume, with strategic investment in machinery for efficiency.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="opportunity" class="tab-content">
+                    <h2 class="text-2xl font-bold mb-6 text-stone-700">The Opportunity: Use of Funds & Financials</h2>
+                    <p class="text-lg text-gray-600 mb-8">
+                        The $500,000 capital injection is designated to fund the increase in trading volume. The allocation is structured to handle the logistics, materials, and operational costs of doubling output to 6 containers per month.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                        <div class="bg-white p-6 rounded-lg shadow-lg">
+                            <h3 class="text-lg font-semibold mb-4">Detailed Use of Funds</h3>
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left">
+                                    <thead class="bg-gray-50">
+                                        <tr>
+                                            <th class="p-3 font-medium text-sm">Allocation Category</th>
+                                            <th class="p-3 font-medium text-sm text-right">Amount</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="border-b">
+                                            <td class="p-3">I. Machinery & Efficiency</td>
+                                            <td class="p-3 text-right font-medium">$133,333.33</td>
+                                        </tr>
+                                        <tr class="border-b">
+                                            <td class="p-3">II. Raw Material Buffer Stock</td>
+                                            <td class="p-3 text-right font-medium">$26,050.00</td>
+                                        </tr>
+                                        <tr class="border-b">
+                                            <td class="p-3">III. Pre-paid Leases</td>
+                                            <td class="p-3 text-right font-medium">$24,691.36</td>
+                                        </tr>
+                                        <tr class="border-b">
+                                            <td class="p-3">IV. Operational Working Capital</td>
+                                            <td class="p-3 text-right font-medium">$315,925.31</td>
+                                        </tr>
+                                        <tr class="bg-gray-100">
+                                            <td class="p-3 font-bold">TOTAL CAPITAL INVESTMENT</td>
+                                            <td class="p-3 text-right font-bold">$500,000.00</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white p-6 rounded-lg shadow-lg">
+                            <h3 class="text-lg font-semibold mb-4">Projected Annual Cash Distribution</h3>
+                             <div class="overflow-x-auto">
+                                <table class="w-full text-left">
+                                    <thead class="bg-gray-50">
+                                        <tr>
+                                            <th class="p-3 font-medium text-sm">Year</th>
+                                            <th class="p-3 font-medium text-sm text-right">Annual Distribution</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="border-b">
+                                            <td class="p-3">Year 1</td>
+                                            <td class="p-3 text-right font-medium">$185,619.22</td>
+                                        </tr>
+                                        <tr class="border-b">
+                                            <td class="p-3">Year 2</td>
+                                            <td class="p-3 text-right font-medium">$205,271.57</td>
+                                        </tr>
+                                        <tr class="border-b">
+                                            <td class="p-3">Year 3</td>
+                                            <td class="p-3 text-right font-medium">$228,028.75</td>
+                                        </tr>
+                                        <tr class="border-b">
+                                            <td class="p-3">Year 4</td>
+                                            <td class="p-3 text-right font-medium">$246,238.45</td>
+                                        </tr>
+                                        <tr class="bg-gray-100">
+                                            <td class="p-3 font-bold">Total Distribution</td>
+                                            <td class="p-3 text-right font-bold">$865,157.99</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="validation" class="tab-content">
+                    <h2 class="text-2xl font-bold mb-6 text-stone-700">Why Us? Proven Consistency & Secured Contracts</h2>
+                    <p class="text-lg text-gray-600 mb-8">
+                        Our business case is validated by four decades of consistency and secured future demand, minimizing operational and market risk.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="stat-card">
+                            <h3 class="text-lg font-semibold mb-3 text-amber-700">1. Infrastructure-Ready</h3>
+                            <p class="text-gray-600 mb-2"><strong class="text-gray-800">Capacity:</strong> 300 Tons / Month</p>
+                            <p class="text-gray-600 mb-2"><strong class="text-gray-800">Current Use:</strong> ~75 Tons / Month</p>
+                            <p class="text-gray-600">This investment isn't for building; it's for scaling. We use existing latent capacity to meet new demand immediately.</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3 class="text-lg font-semibold mb-3 text-amber-700">2. Secured Future Revenue</h3>
+                            <p class="text-gray-600 mb-2"><strong class="text-gray-800">Contract:</strong> 6 Containers / Month</p>
+                            <p class="text-gray-600 mb-2"><strong class="text-gray-800">Valid Through:</strong> January 2026</p>
+                            <p class="text-gray-600">We have a binding sales contract that doubles our current volume, securing the revenue stream this investment will service.</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3 class="text-lg font-semibold mb-3 text-amber-700">3. 40-Year Quality Validation</h3>
+                            <p class="text-gray-600 mb-2"><strong class="text-gray-800">1985:</strong> Indonesian Lab Certified</p>
+                            <p class="text-gray-600 mb-2"><strong class="text-gray-800">2010:</strong> German Lab Verified</p>
+                            <p class="text-gray-600 mb-2"><strong class="text-gray-800">2023:</strong> Japanese Lab Verified</p>
+                            <p class="text-gray-600">Independent labs prove our premium specification has remained consistent for decades.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="market" class="tab-content">
+                    <h2 class="text-2xl font-bold mb-6 text-stone-700">Market & Growth Strategy</h2>
+                    <p class="text-lg text-gray-600 mb-8">
+                        Our growth strategy is to leverage our existing capacity to meet secured demand, scaling from 3 to 6+ containers per month. Our offtaker profile is diverse and stable, focused on high-value markets.
+                    </p>
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h3 class="text-lg font-semibold mb-4 text-center">Key Offtaker Distribution (% Share by Year)</h3>
+                        <div class="chart-container" style="max-width: 800px; height: 400px;">
+                            <canvas id="marketChart"></canvas>
+                        </div>
+                         <p class="text-sm text-gray-600 mt-4 text-center">This chart shows the stable, diversified mix of our international offtakers over the 4-year projection, highlighting our strong position in key markets like Egypt and Germany.</p>
+                    </div>
+                </div>
+
+                <div id="social" class="tab-content">
+                    <h2 class="text-2xl font-bold mb-6 text-stone-700">Our Social Enterprise Mission</h2>
+                    <p class="text-lg text-gray-600 mb-8">
+                        PT. Dian Niaga is a social enterprise. Our commitment to quality is matched by our dedication to social impact and community empowerment.
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="bg-white p-6 rounded-lg shadow-lg border-l-4 border-amber-700">
+                            <h3 class="text-lg font-semibold mb-3 text-stone-800">Local Community Empowerment</h3>
+                            <p class="text-gray-600">
+                                Approximately <strong class="text-gray-900">30% of our raw material processing</strong> is managed by local communities. We provide comprehensive training, necessary equipment, and full logistical support (including transport) to ensure consistent quality and, most importantly, a reliable and fair income for participants.
+                            </p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-lg border-l-4 border-amber-700">
+                            <h3 class="text-lg font-semibold mb-3 text-stone-800">Inclusivity & Support</h3>
+                            <p class="text-gray-600">
+                                Our dedicated training center actively caters to and supports <strong class="text-gray-900">individuals with disabilities</strong>. We offer specialized training and resources to integrate them directly into our supply chain, fostering economic independence, social inclusion, and valuable skill development.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </main>
+
+            <footer class="p-6 text-center text-sm text-gray-500 bg-gray-50 border-t border-gray-200">
+                PT. Dian Niaga Jakarta | Confidential Investment Proposal | November 2025
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        const chartColors = {
+            stone: 'rgba(120, 113, 108, 1)', 
+            amber: 'rgba(180, 83, 9, 1)',   
+            gray: 'rgba(156, 163, 175, 1)',
+            lightStone: 'rgba(168, 162, 158, 1)',
+            lightAmber: 'rgba(217, 119, 6, 1)',
+            lighterStone: 'rgba(214, 211, 209, 1)'
+        };
+
+        const chartColorsBg = {
+            stone: 'rgba(120, 113, 108, 0.7)',
+            amber: 'rgba(180, 83, 9, 0.7)',
+            gray: 'rgba(156, 163, 175, 0.7)',
+            lightStone: 'rgba(168, 162, 158, 0.7)',
+            lightAmber: 'rgba(217, 119, 6, 0.7)',
+            lighterStone: 'rgba(214, 211, 209, 0.7)'
+        };
+        
+        function formatCurrency(value) {
+            return '$' + value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+        }
+
+        const defaultChartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                    labels: {
+                        font: { size: 12 },
+                        boxWidth: 20,
+                        padding: 15
+                    }
+                },
+                tooltip: {
+                    backgroundColor: '#fff',
+                    titleColor: '#333',
+                    bodyColor: '#555',
+                    borderColor: '#ddd',
+                    borderWidth: 1,
+                    padding: 10,
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.dataset.label || '';
+                            if (label) {
+                                label += ': ';
+                            }
+                            if (context.parsed.y !== null) {
+                                if (context.chart.id === 'paybackChart' || context.chart.id === 'fundsChart') {
+                                    label += formatCurrency(context.parsed.y || context.parsed);
+                                } else {
+                                     label += context.parsed.y + '%';
+                                }
+                            }
+                            return label;
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    grid: { display: false },
+                    ticks: { font: { size: 12 } }
+                },
+                y: {
+                    grid: { 
+                        color: '#e5e7eb',
+                        borderDash: [2, 4],
+                     },
+                    ticks: { 
+                        font: { size: 12 },
+                        callback: function(value, index, values) {
+                            if (this.chart.id === 'paybackChart') {
+                                return '$' + value / 1000 + 'k';
+                            }
+                            return value;
+                        }
+                    }
+                }
+            }
+        };
+
+        function initOverviewCharts() {
+            const paybackCtx = document.getElementById('paybackChart').getContext('2d');
+            new Chart(paybackCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Year 1', 'Year 2', 'Year 3', 'Year 4'],
+                    datasets: [{
+                        label: 'Annual Distribution',
+                        data: [185619.22, 205271.57, 228028.75, 246238.45],
+                        backgroundColor: chartColorsBg.amber,
+                        borderColor: chartColors.amber,
+                        borderWidth: 1,
+                        borderRadius: 4
+                    }]
+                },
+                options: { ...defaultChartOptions, plugins: { ...defaultChartOptions.plugins, legend: { display: false } } }
+            });
+
+            const fundsCtx = document.getElementById('fundsChart').getContext('2d');
+            new Chart(fundsCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Machinery & Efficiency', 'Raw Material Buffer Stock', 'Pre-paid Leases', 'Operational Working Capital'],
+                    datasets: [{
+                        label: 'Use of Funds',
+                        data: [133333.33, 26050.00, 24691.36, 315925.31],
+                        backgroundColor: [
+                            chartColorsBg.amber,
+                            chartColorsBg.lightAmber,
+                            chartColorsBg.stone,
+                            chartColorsBg.lightStone
+                        ],
+                        borderColor: [
+                            chartColors.amber,
+                            chartColors.lightAmber,
+                            chartColors.stone,
+                            chartColors.lightStone
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: { 
+                    ...defaultChartOptions, 
+                    scales: { x: { display: false }, y: { display: false } },
+                    cutout: '60%'
+                }
+            });
+        }
+        
+        function initMarketChart() {
+            const marketCtx = document.getElementById('marketChart').getContext('2d');
+            new Chart(marketCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Year 1', 'Year 2', 'Year 3', 'Year 4'],
+                    datasets: [
+                        {
+                            label: 'Egypt',
+                            data: [34.79, 42.48, 44.93, 38.31],
+                            backgroundColor: chartColorsBg.amber,
+                        },
+                        {
+                            label: 'Germany',
+                            data: [17.06, 23.82, 18.89, 16.11],
+                            backgroundColor: chartColorsBg.lightAmber,
+                        },
+                        {
+                            label: 'UK',
+                            data: [17.47, 11.91, 18.89, 16.11],
+                            backgroundColor: chartColorsBg.stone,
+                        },
+                        {
+                            label: 'Spain',
+                            data: [15.85, 11.91, 9.45, 16.11],
+                            backgroundColor: chartColorsBg.lightStone,
+                        },
+                        {
+                            label: 'USA',
+                            data: [14.83, 9.88, 7.84, 13.37],
+                            backgroundColor: chartColorsBg.lighterStone,
+                        }
+                    ]
+                },
+                options: { 
+                    ...defaultChartOptions,
+                    scales: {
+                        x: { ...defaultChartOptions.scales.x, stacked: true },
+                        y: { 
+                            ...defaultChartOptions.scales.y, 
+                            stacked: true,
+                            ticks: {
+                                callback: value => value + '%'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function setupTabs() {
+            const tabs = document.querySelectorAll('.tab-button');
+            const contents = document.querySelectorAll('.tab-content');
+            let marketChartInitialized = false;
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const target = tab.getAttribute('data-tab');
+                    
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    
+                    contents.forEach(c => c.classList.remove('active'));
+                    document.getElementById(target).classList.add('active');
+
+                    if (target === 'market' && !marketChartInitialized) {
+                        initMarketChart();
+                        marketChartInitialized = true;
+                    }
+                });
+            });
+        }
+
+        window.onload = () => {
+            initOverviewCharts();
+            setupTabs();
+        };
+    </script>
+</body>
+</html>
